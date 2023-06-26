@@ -1,0 +1,10 @@
+<div class="card d-flex flex-row justify-content-between align-items-center pe-2">
+
+  <div class="card-body ">
+    <label class="form-check-label stretched-link">
+      <input class="form-check-input me-2" type="checkbox" value="" [checked]="task.done" (change)="onCheckboxChange()">{{
+      task.body }}
+    </label>
+  </div>
+  <button type="button" class="btn-close" (click)="onTaskDelete()"></button>
+</div>
