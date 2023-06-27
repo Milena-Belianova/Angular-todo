@@ -1,0 +1,40 @@
+<!-- header -->
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Edit task</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-describedby="modal-title"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+  </button>
+</div>
+<!-- body -->
+<div class="modal-body">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Add task.."
+    autocomplete="off"
+    [(ngModel)]="taskBody"
+    name="text"
+  />
+</div>
+
+<!-- footer -->
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="activeModal.dismiss('Cancel click')"
+    >Cancel</button
+  >
+  <button
+    type="button"
+    ngbAutofocus
+    class="btn btn-success"
+    (click)="passBack()"
+    [disabled]="!taskBody.length"
+    >Save</button
+  >
+</div>

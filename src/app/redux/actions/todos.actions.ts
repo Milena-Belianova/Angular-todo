@@ -7,5 +7,6 @@ export const TodosActions = createActionGroup({
     'Add task': props<Task>(),
     'Remove task': props<{ id: number }>(),
     'Set task done': props<{ id: number }>(),
+    'Edit task': props<Task>(),
   },
 });

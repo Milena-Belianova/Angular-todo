@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
-import { Task } from 'src/app/redux/state.models';
+import { Filter, Task } from 'src/app/redux/state.models';
 import { Store } from '@ngrx/store';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { selectTodosData } from 'src/app/redux/selectors/todos.selectors';
+import { selectFilteredTasks } from 'src/app/redux/selectors/todos.selectors';
+import { FilterActions } from 'src/app/redux/actions/filter.actions';
 
 @UntilDestroy()
 @Component({
@@ -19,10 +20,24 @@ export class TodoListComponent {
 
   constructor(private store: Store) {
     this.store
-      .select(selectTodosData)
+      .select(selectFilteredTasks)
       .pipe(untilDestroyed(this))
       .subscribe((value) => {
         this.todos = value;
       });
+  }
+
+  handleFilterAllTasks() {
+    this.store.dispatch(FilterActions.setFilter({ filterValue: Filter.All }));
+  }
+
+  handleFilterTodo() {
+    this.store.dispatch(FilterActions.setFilter({ filterValue: Filter.Todo }));
+  }
+
+  handleFilterCompleted() {
+    this.store.dispatch(
+      FilterActions.setFilter({ filterValue: Filter.Completed })
+    );
   }
 }

@@ -1,4 +1,19 @@
-import { createFeatureSelector } from '@ngrx/store';
-import { Task } from '../state.models';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { Filter, Task } from '../state.models';
+import { selectFilter } from './filter.selectors';
 
-export const selectTodosData = createFeatureSelector<Task[]>('todos');
+const selectTodosData = createFeatureSelector<Task[]>('todos');
+
+export const selectFilteredTasks = createSelector(
+  selectTodosData,
+  selectFilter,
+  (state, filter) => {
+    if (filter === Filter.Todo) {
+      return state.filter((t) => t.done === false);
+    }
+    if (filter === Filter.Completed) {
+      return state.filter((t) => t.done === true);
+    }
+    return state;
+  }
+);

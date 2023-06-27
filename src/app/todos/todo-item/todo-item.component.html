@@ -1,10 +1,51 @@
-<div class="card d-flex flex-row justify-content-between align-items-center pe-2">
-
-  <div class="card-body ">
-    <label class="form-check-label stretched-link">
-      <input class="form-check-input me-2" type="checkbox" value="" [checked]="task.done" (change)="onCheckboxChange()">{{
-      task.body }}
+<!-- eslint-disable max-len -->
+<div
+  class="card d-flex flex-row justify-content-between align-items-center pe-2"
+>
+  <div class="card-body">
+    <label class="form-check-label d-flex justify-center align-items-center">
+      <input
+        class="form-check-input me-2 checkbox"
+        type="checkbox"
+        value=""
+        [checked]="task.done"
+        (change)="onCheckboxClick()"
+      />
+      <span [ngClass]="{ 'text-decoration-line-through': task.done }" class="fs-6">{{
+        task.body
+      }}</span>
     </label>
   </div>
-  <button type="button" class="btn-close" (click)="onTaskDelete()"></button>
+
+  <div class="dropdown">
+    <button
+      class="btn btn-light rounded-circle menu__btn"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <app-menu></app-menu>
+    </button>
+    <ul class="dropdown-menu">
+      <li
+        ><button class="dropdown-item menu__link" type="button" (click)="openEditModal()">
+          <app-edit></app-edit>
+          Edit</button
+        ></li
+      >
+      <li>
+        <hr class="dropdown-divider" />
+      </li>
+      <li
+        ><button
+          class="dropdown-item text-danger menu__link"
+          type="button"
+          (click)="onTaskDelete()"
+        >
+          <app-delete></app-delete>
+          Delete</button
+        ></li
+      >
+    </ul>
+  </div>
 </div>

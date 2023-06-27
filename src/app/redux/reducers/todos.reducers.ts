@@ -11,12 +11,29 @@ export const todosReducer = createReducer(
     state.filter((t) => t.id !== id)
   ),
   on(TodosActions.setTaskDone, (state, { id }): Task[] => {
-    let editItem = state.find((t) => t.id === id)!;
-    editItem = {
-      ...editItem,
-      done: !editItem.done,
-    };
-    console.log(editItem);
-    return [...state.filter((t) => t.id !== id), editItem!];
+    let editItem = state.find((t) => t.id === id);
+    if (editItem) {
+      editItem = {
+        ...editItem,
+        done: !editItem.done,
+      };
+      return [...state.filter((t) => t.id !== id), editItem].sort(
+        (a, b) => a.id - b.id
+      );
+    }
+    return state;
+  }),
+  on(TodosActions.editTask, (state, task): Task[] => {
+    let editItem = state.find((t) => t.id === task.id);
+    if (editItem) {
+      editItem = {
+        ...editItem,
+        body: task.body,
+      };
+      return [...state.filter((t) => t.id !== task.id), editItem].sort(
+        (a, b) => a.id - b.id
+      );
+    }
+    return state;
   })
 );

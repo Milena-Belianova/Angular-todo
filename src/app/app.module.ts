@@ -7,7 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodosComponent } from './todos/todos.component';
 import { StoreModule } from '@ngrx/store';
 import { todosReducer } from './redux/reducers/todos.reducers';
-
+import { SharedModule } from './shared/shared.module';
+import { filterReducer } from './redux/reducers/filter.reducers';
 @NgModule({
   declarations: [AppComponent],
   providers: [],
@@ -17,8 +18,10 @@ import { todosReducer } from './redux/reducers/todos.reducers';
     AppRoutingModule,
     BrowserAnimationsModule,
     TodosComponent,
+    SharedModule,
     StoreModule.forRoot({
       todos: todosReducer,
+      filter: filterReducer,
     }),
   ],
 })
