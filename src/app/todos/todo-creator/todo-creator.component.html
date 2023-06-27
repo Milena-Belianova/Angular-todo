@@ -1,14 +1,5 @@
-<form class="form gap-3" (ngSubmit)="onSubmit()">
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control add__input"
-      placeholder="Add task.."
-      autocomplete="off"
-      [(ngModel)]="taskText"
-      name="text"
-    />
-  </div>
+<button class="btn btn-primary add__btn" (click)="openModal()">+ Add new task</button>
 
-  <button type="submit" class="btn btn-primary align-self-start">+</button>
-</form>
+
+
+

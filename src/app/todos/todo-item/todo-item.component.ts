@@ -26,10 +26,10 @@ export class TodoItemComponent {
   openEditModal() {
     const modalRef = this.modalService.open(ModalComponent, { centered: true });
     modalRef.componentInstance.task = this.task;
+    modalRef.componentInstance.isEdit = true;
     modalRef.result.then(
       (result) => {
         if (result) {
-          console.log(result);
           this.store.dispatch(TodosActions.editTask(result));
         }
       },

@@ -1,6 +1,6 @@
 <!-- header -->
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-title">Edit task</h4>
+  <h4 class="modal-title" id="modal-title">{{ isEdit ? 'Edit task' : 'Add new task'}}</h4>
   <button
     type="button"
     class="btn-close"
@@ -14,7 +14,7 @@
   <input
     type="text"
     class="form-control"
-    placeholder="Add task.."
+    placeholder="Add task description.."
     autocomplete="off"
     [(ngModel)]="taskBody"
     name="text"
@@ -35,6 +35,6 @@
     class="btn btn-success"
     (click)="passBack()"
     [disabled]="!taskBody.length"
-    >Save</button
+    >{{ isEdit ? 'Save' : 'Add'}}</button
   >
 </div>

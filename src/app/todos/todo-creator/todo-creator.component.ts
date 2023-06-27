@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { TodosActions } from 'src/app/redux/actions/todos.actions';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-todo-creator',
@@ -12,16 +14,22 @@ import { TodosActions } from 'src/app/redux/actions/todos.actions';
   styleUrls: ['./todo-creator.component.scss'],
 })
 export class TodoCreatorComponent {
-  taskText = '';
+  constructor(private store: Store, public modalService: NgbModal) {}
 
-  id = 0;
-
-  constructor(private store: Store) {}
-
-  onSubmit() {
-    this.store.dispatch(
-      TodosActions.addTask({ id: this.id++, body: this.taskText, done: false })
+  openModal() {
+    const modalRef = this.modalService.open(ModalComponent, { centered: true });
+    modalRef.componentInstance.isEdit = false;
+    modalRef.result.then(
+      (result) => {
+        if (result) {
+          this.store.dispatch(TodosActions.addTask(result));
+        }
+      },
+      (reason) => {
+        if (reason) {
+          console.log(`Dismissed `);
+        }
+      }
     );
-    this.taskText = '';
   }
 }

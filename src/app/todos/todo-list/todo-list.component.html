@@ -1,22 +1,43 @@
+<h1>Tasks list</h1>
 <div class="d-flex flex-column gap-2 mt-3">
   <div class="btn-group align-self-end" role="group">
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked (click)="handleFilterAllTasks()">
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio"
+      id="btnradio1"
+      autocomplete="off"
+      checked
+      (click)="handleFilterAllTasks()"
+    />
     <label class="btn btn-outline-primary" for="btnradio1">All tasks</label>
-  
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" (click)="handleFilterTodo()">
+
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio"
+      id="btnradio2"
+      autocomplete="off"
+      (click)="handleFilterTodo()"
+    />
     <label class="btn btn-outline-primary" for="btnradio2">Todo</label>
-  
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" (click)="handleFilterCompleted()">
+
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio"
+      id="btnradio3"
+      autocomplete="off"
+      (click)="handleFilterCompleted()"
+    />
     <label class="btn btn-outline-primary" for="btnradio3">Completed</label>
   </div>
 
   <div *ngIf="todos.length; else elseBlock" class="d-flex flex-column gap-1">
     <app-todo-item *ngFor="let task of todos" [task]="task"></app-todo-item>
   </div>
- 
+
   <ng-template #elseBlock>
     <p class="fs-6 fst-italic text-muted ms-2">No tasks here..</p>
   </ng-template>
-  
-
 </div>
