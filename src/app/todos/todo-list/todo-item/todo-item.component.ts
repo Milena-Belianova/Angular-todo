@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Task } from 'src/app/redux/state.models';
 import { Store } from '@ngrx/store';
 import { TodosActions } from 'src/app/redux/actions/todos.actions';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 

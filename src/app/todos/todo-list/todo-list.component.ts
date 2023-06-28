@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodoItemComponent } from '../todo-item/todo-item.component';
+import { TodoItemComponent } from './todo-item/todo-item.component';
 import { Filter, Task } from 'src/app/redux/state.models';
 import { Store } from '@ngrx/store';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
