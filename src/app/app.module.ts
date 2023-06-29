@@ -9,9 +9,11 @@ import { todosReducer } from './redux/reducers/todos.reducers';
 import { SharedModule } from './shared/shared.module';
 import { filterReducer } from './redux/reducers/filter.reducers';
 import { CoreModule } from './core/core.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 @NgModule({
   declarations: [AppComponent],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
