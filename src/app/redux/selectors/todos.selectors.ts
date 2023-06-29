@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Filter, Task } from '../state.models';
 import { selectFilter } from './filter.selectors';
 
-const selectTodosData = createFeatureSelector<Task[]>('todos');
+export const selectTodosData = createFeatureSelector<Task[]>('todos');
 
 export const selectFilteredTasks = createSelector(
   selectTodosData,

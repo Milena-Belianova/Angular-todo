@@ -33,8 +33,8 @@
     <label class="btn btn-outline-primary" for="btnradio3">Completed</label>
   </div>
 
-  <div *ngIf="todos.length; else elseBlock" class="d-flex flex-column gap-1">
-    <app-todo-item *ngFor="let task of todos" [task]="task"></app-todo-item>
+  <div *ngIf="filteredTodos.length; else elseBlock" class="d-flex flex-column gap-1">
+    <app-todo-item *ngFor="let task of filteredTodos" [task]="task"></app-todo-item>
   </div>
 
   <ng-template #elseBlock>

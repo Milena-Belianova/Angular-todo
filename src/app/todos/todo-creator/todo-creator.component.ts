@@ -25,11 +25,12 @@ export class TodoCreatorComponent {
           this.store.dispatch(TodosActions.addTask(result));
         }
       },
-      (reason) => {
-        if (reason) {
-          console.log(`Dismissed `);
-        }
-      }
+      // (reason) => {
+      //   if (reason) {
+      //     console.log(`Dismissed `);
+      //   }
+      // }
+      () => {}
     );
   }
 }

@@ -2,7 +2,15 @@ import { createReducer, on } from '@ngrx/store';
 import { TodosActions } from '../actions/todos.actions';
 import { Task } from '../state.models';
 
-export const initialState: Task[] = [];
+const getExistingTodos = () => {
+  const todos = localStorage.getItem('todos');
+  if (todos) {
+    return JSON.parse(todos);
+  }
+  return [];
+};
+
+export const initialState: Task[] = getExistingTodos();
 
 export const todosReducer = createReducer(
   initialState,

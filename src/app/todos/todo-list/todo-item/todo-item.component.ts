@@ -33,11 +33,7 @@ export class TodoItemComponent {
           this.store.dispatch(TodosActions.editTask(result));
         }
       },
-      (reason) => {
-        if (reason) {
-          console.log(`Dismissed `);
-        }
-      }
+      () => {}
     );
   }
 
